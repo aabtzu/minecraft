@@ -59,7 +59,7 @@ def get_minecraft_server_status(instance, port):
 
     p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output =  p.communicate()
-    if 'open' in output[1]:
+    if ('open' in output[1]) | ('succeeded' in output[1]):
         return 'running'
     else:
         return 'stopped'
@@ -83,7 +83,7 @@ def get_minecraft_status():
 
     # check which servers are running
     minecraft_port_list = [25565, 25566]
-    notes_list = ['Aryana and Sabrina', 'Anika and Lea']
+    notes_list = ['Aryana and friends', 'Anika and friends']
 
     for ii,port in enumerate(minecraft_port_list):
         if instance_status == 'running':

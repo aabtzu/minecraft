@@ -21,8 +21,8 @@ def test():
 
 def start_minecraft():
     with cd('/home/ubuntu/minecraft10'):
-        run('screen -d -m java -Xmx1024M -Xms1024M -jar minecraft_server.1.10.jar nogui', pty=False)
+        run('screen -S aryana -d -m java -Xmx1024M -Xms1024M -jar minecraft_server.1.10.jar nogui', pty=False)
     with cd('/home/ubuntu/minecraft'):
-        run('screen -d -m java -Xmx1024M -Xms1024M -jar minecraft_server.1.10.jar nogui', pty=False)
+        run('screen -S anika -d -m java -Xmx1024M -Xms1024M -jar minecraft_server.1.10.jar nogui', pty=False)
 
 
