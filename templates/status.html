@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Minecraft server control</title>
+
+
+    <style>
+        input {font-size: 18px;}
+        body {background-color:lightgrey;}
+        h2   {color:blue;}
+        #submit1 {background-color:yellow;}
+        #submit2 {background-color:#32CD32;}
+        #submit3 {background-color:red;}
+        table, td, th {border-collapse: collapse; background-color:#bfbfbf; }
+        th, td {padding: 15px; text-align: left; border-bottom: 1px solid black;}
+    </style>
+</head>
+<body>
+
+<h2> Minecraft server control</h2>
+<div id="input">
+
+
+    <form id="form" method="POST" action="">
+
+        <input id="submit1" type="submit" value="Refresh" name="submit">
+        <input id="submit2" type="submit" value="Go Bananas - Start everything" name="submit">
+        <input id="submit3" type="submit" value="STOP everything" name="submit">
+
+    </form>
+</div>
+
+<h2> Current server status </h2>
+{% if server_data is defined %}
+<div id = "server_data">
+    {{ server_data | safe }}
+</div>
+{% endif %}
+
+</body>
+</html>
