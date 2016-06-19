@@ -17,7 +17,7 @@ def highlight(val):
     good_color = '#32CD32'
     bad_color = 'red'
     none_color = '#bfbfbf'
-
+    none_color = '#9dd196'
     try:
         if 'running' == val:
             color = good_color
