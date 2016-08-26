@@ -82,8 +82,8 @@ def get_minecraft_status():
         status_dict[server_name]['notes'] = ''
 
     # check which servers are running
-    minecraft_port_list = [25565, 25566]
-    notes_list = ['Aryana and friends', 'Anika and friends']
+    minecraft_port_list = [25567, 25566, 25565]
+    notes_list = ['SkyGrid', 'Aryana and friends', 'Anika and friends']
 
     for ii,port in enumerate(minecraft_port_list):
         if instance_status == 'running':
