@@ -10,6 +10,10 @@ import subprocess
 import datetime
 import dateutil.parser as dp
 
+
+SERVER_CONTROL_FILE = 'servers.csv'
+df_servers = pandas.read_csv(SERVER_CONTROL_FILE)
+
 cred = uc.AuthTPT('AWS-aab')
 ACCESS_KEY = cred.get_value('aws_access_key_id')
 ACCESS_SECRET = cred.get_value('aws_secret_access_key')
@@ -82,10 +86,8 @@ def get_minecraft_status():
         status_dict[server_name]['notes'] = ''
 
     # check which servers are running
-    minecraft_port_list = [25567, 25566, 25565]
-    notes_list = ['SkyGrid', 'Aryana and friends', 'Anika and friends']
-
-    for ii,port in enumerate(minecraft_port_list):
+    for ii,row in df_servers.iterrows():
+        port = row['port']
         if instance_status == 'running':
 
             server_status = get_minecraft_server_status(instance, port)
@@ -94,7 +96,7 @@ def get_minecraft_status():
         server_name = 'minecraft on port %d' % port
         status_dict[server_name] = dict()
         status_dict[server_name]['status'] = server_status
-        status_dict[server_name]['notes'] = notes_list[ii]
+        status_dict[server_name]['notes'] = row['desc']
 
     df = pandas.DataFrame.from_dict(status_dict, 'index')
     df.sort_index(inplace=True)
