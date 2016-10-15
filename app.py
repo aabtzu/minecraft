@@ -9,7 +9,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+
+    df_status = minecraft.get_minecraft_status()
+    server_data = df_status.to_html(classes="table table-striped")
+
+    form = None
+
+    return render_template('foo.html', server_data=server_data, form=form)
 
 
 def highlight(val):
