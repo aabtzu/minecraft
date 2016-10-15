@@ -1,0 +1,58 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Minecraft server control</title>
+
+    <style>
+        body {background-color:lightgrey; background-image: url("static/imgs/minecraft.jpg"); background-size: 50% 50%;}
+        h2   {color:white;}
+        .panel-primary > .panel-heading {
+          color: white;
+          background-color: #067C64;
+          border-color: #067C64;}
+        .panel-primary{border-color: #067C64;}
+	</style>
+
+</head>
+<body>
+
+	<div class="container">
+        <div class="page-header">
+            <h2>Minecraft server control </h2>
+            <span class="label label-info">Last Updated at {{ update_date}} </span>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Server control</div>
+
+            <form id="form" method="POST" action="/foo" role="form">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button name="submit" type="submit" class="btn btn-default" value="refresh">Refresh</button>
+                    <button name="submit" type="submit" class="btn btn-default" value="start">Go Bananas - Start everything</button>
+                    <button name="submit" type="submit" class="btn btn-default" value="stop">Stop</button>
+                </div>
+
+            </form>
+        </div>
+
+        {% if server_data is defined %}
+        <div class="panel panel-primary"><div class="panel-heading">Server status</div>
+            <div class = "table-responsive">
+                <div id = "server_data">
+                    {{ server_data | safe }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+</body>
+</html>
+
+{% endblock %}
