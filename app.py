@@ -11,8 +11,8 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 Bootstrap(app)
 
-@app.route('/foo', methods=('GET', 'POST'))
-def foo():
+@app.route('/status', methods=('GET', 'POST'))
+def status():
 
     if request.method == 'POST':
         action = request.form.get("submit").lower()
@@ -33,7 +33,7 @@ def foo():
     update_date = datetime.datetime.today().strftime("%A %d-%b-%Y %r")
     form = None
 
-    return render_template('foo.html', server_data=server_data, form=form, update_date=update_date)
+    return render_template('status.html', server_data=server_data, form=form, update_date=update_date)
 
 
 def highlight(val):
@@ -55,8 +55,8 @@ def highlight(val):
 
 
 
-@app.route('/status', methods=('GET', 'POST'))
-def status():
+@app.route('/old', methods=('GET', 'POST'))
+def status_old():
 
     if request.method == 'POST':
         print request.form['submit']
